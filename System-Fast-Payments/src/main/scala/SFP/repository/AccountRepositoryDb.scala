@@ -2,6 +2,7 @@ package SFP.repository
 
 import SFP.db.AccountDb._
 import SFP.model.{Account, CreateAccount, ReplenishAccount, TransferMoney, WithdrawAccount}
+import SFP.model.APIError
 import slick.jdbc.PostgresProfile.api._
 
 import java.util.UUID
@@ -78,4 +79,5 @@ class AccountRepositoryDb(implicit val ec: ExecutionContext, db: Database) exten
   override def deleteAccount(id: UUID): Future[Unit] = {
       db.run(accountTable.filter(_.id === id).delete).map(_ => ())
   }
+
 }

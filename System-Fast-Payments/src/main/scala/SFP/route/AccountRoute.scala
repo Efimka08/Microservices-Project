@@ -45,5 +45,10 @@ class AccountRoute(repository: AccountRepository) extends FailFastCirceSupport{
         delete {
           complete(repository.deleteAccount(id))
         }
-      }
+      } /*~
+      path("account" / "external" / "transfer") {
+        (put & entity(as[TransferMoney])) { transferMoney =>
+          complete(repository.transferMoney(transferMoney))
+        }
+      }*/
 }

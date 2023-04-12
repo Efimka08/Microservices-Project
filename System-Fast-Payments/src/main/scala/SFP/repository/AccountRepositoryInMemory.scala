@@ -70,4 +70,5 @@ class AccountRepositoryInMemory(implicit val ec: ExecutionContext) extends Accou
   override def deleteAccount(id: UUID) = Future {
     bank.remove(id)
   }
+
 }

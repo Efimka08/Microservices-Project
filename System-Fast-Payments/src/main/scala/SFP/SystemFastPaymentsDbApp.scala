@@ -6,6 +6,7 @@ import SFP.route._
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.server.Directives._
+import com.typesafe.config.ConfigFactory
 import slick.jdbc.PostgresProfile.api._
 
 object SystemFastPaymentsDbApp extends App {
@@ -18,5 +19,7 @@ object SystemFastPaymentsDbApp extends App {
   val helloRoute = new HelloRoute().route
   val accountRoute = new AccountRoute(repository).route
 
-  Http().newServerAt("0.0.0.0", port = 8080).bind(helloRoute ~ accountRoute)
+  val port = ConfigFactory.load().getInt("port")
+
+  Http().newServerAt("0.0.0.0", port = port).bind(helloRoute ~ accountRoute)
 }

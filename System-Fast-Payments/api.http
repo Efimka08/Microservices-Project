@@ -1,34 +1,61 @@
 ###
-GET http://localhost:8080/accounts
+GET http://localhost:8081/accounts
 
 ###
-GET http://localhost:8080/account/047340ea-f385-4b0f-b32a-989a73bd3ac1
+GET http://localhost:8081/account/1ec6ace7-8b67-4575-bfa6-f7f3b0345896
 
 ###
-POST http://localhost:8080/account/create
+POST http://localhost:8081/account/create
 Content-Type: application/json
 
 {}
 
 ###
-PUT http://localhost:8080/account/replenish
+PUT http://localhost:8081/account/replenish
 Content-Type: application/json
 
-{"id": "5e129fcc-b3ec-4bf7-bbfe-1d3846a68eee", "amount": 350}
+{"id": "e252d978-d029-4788-b52b-7c4771751cef", "amount": 500}
 
 ###
-PUT http://localhost:8080/account/withdraw
+PUT http://localhost:8081/account/withdraw
 Content-Type: application/json
 
-{"id": "b23c5788-ed35-4ee3-916a-d1d1016490d6", "amount": 300}
+{"id": "448c0307-b8d7-4b34-a6ea-ac2738f5927c", "amount": 15}
 
 ###
-PUT http://localhost:8080/account/transfer
+PUT http://localhost:8081/account/transfer
 Content-Type: application/json
 
-{"idFrom": "b23c5788-ed35-4ee3-916a-d1d1016490d6", "idTo": "5e129fcc-b3ec-4bf7-bbfe-1d3846a68eee", "amount": 150}
+{"idFrom": "c2ff51f5-e99f-4ef2-8284-673900955b20", "idTo": "448c0307-b8d7-4b34-a6ea-ac2738f5927c", "amount": 10}
 
 ###
 DELETE http://localhost:8080/account/5e129fcc-b3ec-4bf7-bbfe-1d3846a68eee
 
-### Test git
+###### Test 2 App
+
+###
+GET http://localhost:8082/accounts
+
+###
+POST http://localhost:8082/account/create
+Content-Type: application/json
+
+{}
+
+###
+PUT http://localhost:8082/account/replenish
+Content-Type: application/json
+
+{"id": "b3c87302-ff4b-4294-b94c-fa6f4ed3f85a", "amount": 50}
+
+###
+PUT http://localhost:8082/account/transfer
+Content-Type: application/json
+
+{"idFrom": "b63bfe53-9a08-4312-935f-f7c9513caca5", "idTo": "b3c87302-ff4b-4294-b94c-fa6f4ed3f85a", "amount": 5}
+
+###
+PUT http://localhost:8082/account/external/transfer
+Content-Type: application/json
+
+{"idFrom": "b63bfe53-9a08-4312-935f-f7c9513caca5", "idTo": "b3c87302-ff4b-4294-b94c-fa6f4ed3f85a", "amount": 5}
